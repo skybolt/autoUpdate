@@ -1,0 +1,1 @@
+[{"title":"Fuel","subtitle":"US Gallons","ranges":[3.5, 12.30, 13.80],"measures":[ 1.07, 2.57],"markers":[  1.50]},{"title":"Distance","subtitle":"US miles","ranges":[100,   264,   297],"measures":[    159,    126],"markers":[  32.23]},{"title":"Fuel Economy","subtitle":"US miles","ranges":[18,24,30],"measures":[     14,     22],"markers":[ 22]}]

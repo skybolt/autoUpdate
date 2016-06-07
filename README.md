@@ -1,2 +1,3 @@
-# autoUpdate
-HTML application (d3.js based) to display JSON output from Arduino, runs on Raspi
+This is a Bullet Chart example that allows the user to update the chart automatically by updating the `bulletdata2.json` file. This (online) example won't change, but if you download the file and read in conjunction with d3noob.org you will be able to impliment your own dynamic chart with it.
+
+This is a follow on from the [example](http://bl.ocks.org/d3noob/5886992) that updated the charts with random data.

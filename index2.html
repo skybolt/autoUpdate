@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<body bgcolor="#000000">
+<!--<body background="ccf.jpeg">  -->
+<meta charset="utf-8">
+<!-- <meta http-equiv="refresh" content="2" /> -->
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  padding-top: 40px;
+  position: relative;
+  width: 460px;
+}
+
+.bullet { font: 10px sans-serif; fill: #FFF}
+.bullet .marker { stroke: #FFFFFF; stroke-width: 2px; }
+.bullet .tick line { stroke: #FFF; stroke-width: .5px; }
+.bullet .range.s0 { fill: #724424; }
+.bullet .range.s1 { fill: #614122; }
+.bullet .range.s2 { fill: #4C341B; }
+.bullet .measure.s0 { fill: #B56E01; }
+.bullet .measure.s1 { fill: #FA0; }
+.bullet .title { font-size: 17px;  }
+.bullet .title { fill: #CCC; }
+.bullet .subtitle { fill: #CCC; }
+
+</style>
+<script src="d3.v3.min.js"></script>
+<script src="bullet.js"></script>
+<script>
+
+var margin = {top: 5, right: 40, bottom: 20, left: 120},
+    width = 480 - margin.left - margin.right,
+    height = 50 - margin.top - margin.bottom;
+
+var chart = d3.bullet()
+    .width(width)
+    .height(height);
+
+d3.json("bulletdata.json", function(error, data) {
+  var svg = d3.select("body").selectAll("svg")
+      .data(data)
+    .enter().append("svg")
+      .attr("class", "bullet")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .call(chart);
+
+  var title = svg.append("g")
+      .style("text-anchor", "end")
+      .attr("transform", "translate(-6," + height / 2 + ")");
+
+  title.append("text")
+      .attr("class", "title")
+      .text(function(d) { return d.title; });
+
+  title.append("text")
+      .attr("class", "subtitle")
+      .attr("dy", "1em")
+      .text(function(d) { return d.subtitle; });
+
+  setInterval(function() {
+    updateData();
+	}, 400);
+
+});
+
+function updateData() {
+  d3.json("bulletdata.json", function(error, data) {
+		d3.select("body").selectAll("svg")
+			.datum(function (d, i) {
+				d.ranges = data[i].ranges;
+				d.measures = data[i].measures;
+				d.markers = data[i].markers;
+				return d;
+			})
+			.call(chart.duration(200));
+	});
+}
+
+</script>
+</body>
