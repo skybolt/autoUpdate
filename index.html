@@ -1,45 +1,52 @@
 <!DOCTYPE html>
-<body bgcolor="#000000">
-<!--<body background="ccf.png">-->  
+<body bgcolor="#FF0000">
 <meta charset="utf-8">
-<!-- <meta http-equiv="refresh" content="2" /> -->
-<meta http-equiv="refresh" content="60" />
+
 <style>
 
-body {
+body {	
+  background:url("ccf.jpg");	
+  background-position: top center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: auto;
-  padding-top: 60px;
+  padding-top: 30px;
   position: relative;
-  width: 460px;
+  width: 480px;
 }
 
 
 .bullet { font: 10px sans-serif; font-weight: bold; fill: #FFF}
 .bullet .marker { stroke: #FFFFFF; stroke-width: 4px; }
 .bullet .tick line { stroke: #999; stroke-width: 1.5px; }
-.bullet .range.s0 { fill: #825C34; stroke: #000; stroke-width: 1.5px}
-.bullet .range.s1 { fill: #614122; stroke: #000; stroke-width: 1.5px}
-.bullet .range.s2 { fill: #4C341B; stroke: #000; stroke-width: 1.5px}
-.bullet .measure.s0 { fill: #FA0; }
-.bullet .measure.s1 { fill: #B56E01; }
+.bullet .range.s0 { fill: #724424; stroke: #999; stroke-width: 1.5px}
+.bullet .range.s1 { fill: #614122; stroke: #999; stroke-width: 1.5px}
+.bullet .range.s2 { fill: #4C341B; stroke: #999; stroke-width: 1.5px}
+.bullet .measure.s0 { fill: #B56E01; }
+.bullet .measure.s1 { fill: #FA0; }
 .bullet .title { font-size: 17px; font-weight: bold; }
 .bullet .subtitle { fill: #999; }
 
 </style>
 <script src="d3.v3.min.js"></script>
+<!--<script src="https://d3js.org/d3.v3.min.js"></script>-->
 <script src="bullet.js"></script>
 <script>
 
+
+var callbackError, callbackData; 
+
 var margin = {top: 5, right: 40, bottom: 20, left: 60},
-    width = 460 - margin.left - margin.right,
+    width = 480 - margin.left - margin.right,
     height = 50 - margin.top - margin.bottom;
 
 var chart = d3.bullet()
     .width(width)
     .height(height);
-
+    
 d3.json("bulletdata.json", function(error, data) {
+callbackError = error; 
+callbackData = data; 
+
   var svg = d3.select("body").selectAll("svg")
       .data(data)
     .enter().append("svg")
@@ -51,35 +58,52 @@ d3.json("bulletdata.json", function(error, data) {
       .call(chart);
 
   var title = svg.append("g")
+  	  .attr("class", "title")
       .style("text-anchor", "start")
       .attr("transform", "translate(-0," + height / 2 + ")");
-
-  title.append("text")
-      .attr("class", "title")
+     title.append("text")
+      //.attr("class", "title")
       .attr("dy", "2.6em")
-      .text(function(d) { return d.title; });
+      .text(function(d) { return d.title; }); 
 
-  title.append("text")
-      .attr("class", "subtitle")
+  var subtitle = svg.append("g")
+  	  .attr("class", "subtitle")
+      .style("text-anchor", "start")
+      .attr("transform", "translate(-0," + height / 2 + ")");
+     subtitle.append("text")
+      //.attr("class", "title")
       .attr("dy", "5.5em")
-      .text(function(d) { return d.subtitle; });
+      .text(function(d) { return d.subtitle; }); 
 
-  setInterval(function() {
-    updateData();
-	}, 150);
+
+  function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+  }      
+
+ setInterval(function() {
+   updateData();
+	}, 250);
 
 });
 
+
 function updateData() {
+
   d3.json("bulletdata.json", function(error, data) {
 		d3.select("body").selectAll("svg")
 			.datum(function (d, i) {
 				d.ranges = data[i].ranges;
 				d.measures = data[i].measures;
 				d.markers = data[i].markers;
-				return d;
+				d.title = data[i].title; 
+				d.subtitle = data[i].subtitle;
+				
+			return d;			
+			
 			})
-			.call(chart.duration(00));
+			
+			.call(chart.duration(150)); 			
 	});
 }
 
