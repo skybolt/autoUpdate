@@ -153,6 +153,27 @@ d3.bullet = function() {
           .attr("transform", bulletTranslate(x1))
           .style("opacity", 1e-6)
           .remove();
+
+	  //update titles
+	  var subtitle = g.selectAll("g.subtitle");
+	  	  subtitle.text("text"); 
+	      subtitle.append("g") 
+		  .style("text-anchor", "start")
+		  .attr("transform", "translate(-0," + height / 2 + ")")
+		  
+	  subtitle.append("text")
+          .attr("dy", "5.5em")
+	  	  .text(d.subtitle); 	
+	  	  
+	  var title = g.selectAll("g.title");
+	  	  title.text("text");
+		  title.append("g")
+		  .style("text-anchor", "start")
+		  .attr("transform", "translate(-0," + height / 2 + ")")
+		  
+	  title.append("text")
+          .attr("dy", "2.6em")
+	  	  .text(d.title); 
     });
     d3.timer.flush();
   }
