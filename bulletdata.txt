@@ -1,0 +1,2 @@
+
+[{"title":"fuel used  0.00/  0.00","subtitle":" 10.30 remaining,   2.20 e-reserve  0.00 ga used@idle,   0.00 mi fuel cut","ranges":[ 10.30,    13,  2.20],"measures":[ 10.30, 12.50],"markers":[  0.00]},{"title":"distance  0.00/  0.00","subtitle":"     0mi to E,     0 mi e-reserve,      0mi safe range,     0mi dry range","ranges":[     0,     0,     0],"measures":[     0,     0],"markers":[   0.00]},{"title":"fuel economy  0.00/  0.00","subtitle":"drag stats: 0 -    60:  0.00,  0.00 to   1320ft @  0.00mph","ranges":[18,24,40],"measures":[  0.00,  0.00],"markers":[  0.00]}]
