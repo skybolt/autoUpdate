@@ -1,15 +1,42 @@
 <!DOCTYPE html>
+<head>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours() % 12;
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</head>
+
 <body bgcolor="#FF0000">
 <meta charset="utf-8">
 
+
+<body onload="startTime()">
+<font color = "FFFFFF">
+<b><div align="right" id="txt" position = "center"></div></b>
+
 <style>
+
+
 
 body {	
   background:url("ccf.jpg");	
   background-position: top center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: auto;
-  padding-top: 60px;
+  padding-top: 40px;
   position: relative;
   width: 480px;
 }
