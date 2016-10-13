@@ -26,11 +26,19 @@ function checkTime(i) {
 <body bgcolor="#FF0000">
 <meta charset="utf-8">
 
+<style>
+div.clock {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #FFFFFF;
+}
+</style>
+
 
 <body onload="startTime()">
-<font color = "FFFFFF">
-<b><div align="right" id="txt" position = "center"></div></b>
-
+<b><div class="clock" id="txt"></div></b>
 <style>
 
 
@@ -40,7 +48,7 @@ body {
   background-position: top center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: auto;
-  padding-top: 40px;
+  padding-top: 60px;
   position: relative;
   width: 480px;
 }
