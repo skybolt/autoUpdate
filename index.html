@@ -9,9 +9,15 @@ function startTime() {
     m = checkTime(m);
     //s = checkTime(s);
     var p = "PM"; 
-    if (today.getHours() < 13) {
+    if (today.getHours() < 12) {
     p = "AM";
 }
+
+if (h == 0) {
+     h = 12;
+    }
+
+
     document.getElementById('txt').innerHTML =
     h + ":" + m + " " + p;
     var t = setTimeout(startTime, 500);
