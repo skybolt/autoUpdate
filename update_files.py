@@ -1,5 +1,7 @@
 import shutil
 import time
+import os
+os.chdir('/home/pi/Desktop/autoUpdate')
 timer = .5
 while True:
 	shutil.copy2('testData/bulletdata1.json', 'bulletdata.json')
