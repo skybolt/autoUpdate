@@ -5,7 +5,7 @@ from __future__ import print_function
 import serial, io
 import time
 
-addr  = '/dev/ttyAMA0'  # serial port to read data from
+addr  = '/dev/ttyS0'  # serial port to read data from
 baud  = 57600            # baud rate for serial port
 fname = 'bulletdata.txt'   # log file to save data in
 fmode = 'w'             # log file mode = append
