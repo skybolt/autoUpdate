@@ -4,7 +4,9 @@
 from __future__ import print_function
 import serial, io
 import time
+import os
 
+os.chdir('/home/pi/Desktop/autoUpdate')
 addr  = '/dev/ttyS0'  # serial port to read data from
 baud  = 57600            # baud rate for serial port
 fname = 'bulletdata.txt'   # log file to save data in
