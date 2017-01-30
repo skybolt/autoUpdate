@@ -54,9 +54,10 @@ body {
   background-position: top center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: auto;
-  padding-top: 60px;
+  padding-top: 65px;
+  padding-left: 60px;
   position: relative;
-  width: 480px;
+  width: 420px;
 }
 
 
@@ -81,7 +82,7 @@ body {
 var callbackError, callbackData; 
 
 var margin = {top: 5, right: 40, bottom: 20, left: 60},
-    width = 480 - margin.left - margin.right,
+    width = 420 - margin.left - margin.right,
     height = 50 - margin.top - margin.bottom;
 
 var chart = d3.bullet()
@@ -99,7 +100,7 @@ callbackData = data;
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom + 30)
     .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .attr("transform", "translate(" + 0  + "," + 0 + ")")
       .call(chart);
 
   var title = svg.append("g")
