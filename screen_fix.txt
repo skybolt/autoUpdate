@@ -1,0 +1,10 @@
+[–]givemsm 7 points 6 months ago* 
+Easy fix. Here is a video on disabling it: https://www.youtube.com/watch?v=aTrp83lgq_s
+open:
+sudo nano ~/.config/lxsession/LXDE-pi/autostart
+add:
+@xset s 0 0
+@xset s noblank
+@xset s noexpose
+@xset dpms 0 0 0
+Save file, and reboot
